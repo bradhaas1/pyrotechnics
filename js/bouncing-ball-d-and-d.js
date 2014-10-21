@@ -11,16 +11,31 @@
   var y = 300;		// initial vertical position
   var vx = 2;		// initial horizontal speed (velocity)
   var vy = 0;		// initial vertical speed (velocity)
-  var interval;
+  var interval, isDragging = false;
 
-  //canvas.addEventListener('mousedown', function () {
-  //  canvas.addEventListener('mousemove', onDrag, false);
-  //  canvas.addEventListener('mouseup', onDrop, false);
-  //}, false);
+  canvas.addEventListener('mousedown', function () {
+    canvas.addEventListener('mousemove', onDrag, false);
+    canvas.addEventListener('mouseup', onDrop, false);
+  }, false);
 
-  canvas.addEventListener('mousedown', stopAnim, false);
-  canvas.addEventListener('mouseup', startAnim, false);
+  //canvas.addEventListener('mousedown', stopAnim, false);
+  //canvas.addEventListener('mouseup', startAnim, false);
+
+
   startAnim();
+
+  function onDrag(evt) {
+    isDragging = true;
+    ball.x = evt.clientX;
+    ball.y = event.clientY;
+
+  }
+
+  function onDrop(evt) {
+    canvas.removeEventListener('mousemove', onDrag, false);
+    canvas.removeEventListener('mouseup', onDrop, false);
+  }
+
 
   function startAnim() {
     interval = setInterval(onEachStep, 1000 / 60);

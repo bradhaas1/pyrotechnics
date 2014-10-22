@@ -1,7 +1,7 @@
 ﻿var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-var numBalls = 30;
-var g = 0.1;	// accelleration due to gravity
+var numBalls = 100;
+var g = 0.1;	// acceleration due to gravity
 
 var balls = new Array();
 
@@ -21,8 +21,6 @@ function init() {
   setInterval(onEachStep, 1000/60);
   console.log(balls.length);
 };
-
-
 
 function onEachStep() {
   context.clearRect(0, 0, canvas.width, canvas.height);
